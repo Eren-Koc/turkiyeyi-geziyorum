@@ -1,13 +1,227 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+
+*{
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+ 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input[type="file"]{
+  display: none;
+
+  
+  }
+
+
+
+#date-input::-webkit-inner-spin-button,
+#date-input::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.home-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.home-swiper-slide  {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #2DA15F;
+}
+
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: #2DA15F;
+  fill: none;
+  stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+}
+
+.swiper-pagination-bullet{
+  
+  background-color:#2DA15F !important;
+  width: 12px !important;
+  height: 12px !important;
+} 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
+}
+
+/* width */
+.post-images::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.post-images::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+/* Handle */
+.post-images::-webkit-scrollbar-thumb {
+  background: #2DA15F;
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+.post-images::-webkit-scrollbar-thumb:hover {
+  background: #0f8341;
+}
+
+
+ .swiper-slide {
+  
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+
+} 
+
+
+
+.swiper-wrapper{
+  display: flex;
+  
+}
+.mySwiper{
+  width: 100% !important;
+  height: 100vh !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after{
+  color: #2DA15F !important;
+
+}
+
+.location-icon{
+   filter: drop-shadow(0 0 0.01rem #303030);
+
+}
+.deneme{
+  /* text-shadow: 9px 13px 6px rgba(0,0,0,0.51); */
+  text-shadow: 0.2px 0.2px 0.2px #303030;
+  font-family: "Parisienne", serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+.spinner {
+
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #2DA15F ;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.active-state {
+  position: relative; 
+}
+
+.active-state::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 80%; 
+  height: 2px; 
+  border-radius: 4px;
+  background-color: #2DA15F; 
+}
+
+.explore-date::-webkit-datetime-edit-text {
+  -webkit-appearance: none;
+  display: none;
+}
+.explore-date::-webkit-datetime-edit-month-field{
+  -webkit-appearance: none;
+  display: none;
+}
+.explore-date::-webkit-datetime-edit-day-field {
+  -webkit-appearance: none;
+  display: none;
+}
+.explore-date::-webkit-datetime-edit-year-field {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%; /* Boyutu sabitle */
+}
+
+.explore-date::-webkit-calendar-picker-indicator{
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  background: none;
+  z-index: 10; 
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .swiper-button-next:after,
+  .swiper-button-prev:after{
+    display: none !important;
+  
+  }
 }

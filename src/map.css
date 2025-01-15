@@ -1,0 +1,37 @@
+.svg-turkiye-haritasi {
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+ 
+}
+.svg-turkiye-haritasi svg {
+  width: 100%;
+  height: auto;
+}
+
+
+g g:hover path {
+  fill: #2DA15F;
+}
+/*#bolge-1 g path{
+  fill:#87cdde
+}
+#bolge-2 g path{
+  fill:#ac93a7
+}
+#bolge-3 g path{
+  fill:#ffb380
+}
+#bolge-4 g path{
+  fill:#cccccc
+}
+#bolge-5 g path{
+  fill:#decd87
+}
+#bolge-6 g path{
+  fill:#de8787
+}
+#bolge-7 g path{
+  fill:#aade87
+}*/
+
