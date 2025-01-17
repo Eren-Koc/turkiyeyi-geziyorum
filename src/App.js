@@ -8,7 +8,7 @@ import Profile from './pages/Profile';
 import Login from './components/Login';
 import { UserContextProvider } from './context/user-context';
 import Contact from './pages/Contact';
-import ResetPassword from './pages/ResetPassword';
+import UserOpereations from './pages/UserOperations';
 
 
 
@@ -27,7 +27,7 @@ function App() {
     <Route path="/explore" element={<Explore />} />
     <Route path="/profile" element={<Profile />} />
     <Route path="/contact" element={<Contact />} />
-    <Route path="/reset-password" element={<ResetPassword />} />
+    <Route path="/user-operations" element={<UserOpereations />} />
     <Route path="*" element={<NotExist />} />
 
     </Routes>

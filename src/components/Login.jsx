@@ -194,8 +194,9 @@ const Login = () => {
                   });
                   return; 
                 }
-            
-            
+
+                else{
+                  
                 Swal.fire({
                   position: "top-end",
                   icon: "success",
@@ -207,6 +208,7 @@ const Login = () => {
              
                 navigate("/profile");
                 closeForm(); 
+              }
             
               } catch (error) {
         
