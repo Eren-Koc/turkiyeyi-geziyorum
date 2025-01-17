@@ -30,7 +30,7 @@ const Login = () => {
     const [resetPassword,setResetPassword] = useState(false);
     const [isSending, setIsSending] = useState(false);
     const defaultBanner="https://firebasestorage.googleapis.com/v0/b/travel-app-93279.firebasestorage.app/o/banners%2Fbg.jpg?alt=media&token=4d137226-bac0-4d4a-a631-a435a2770975";
-
+    const websiteUrl = "https://turkiyeyi-geziyorum.vercel.app/user-operations";
     const setProfilePicture=(gender)=>{
         if (gender=="Male")
         return "https://firebasestorage.googleapis.com/v0/b/travel-app-93279.firebasestorage.app/o/profilePictures%2Fman.png?alt=media&token=f6a8faf1-41f4-431b-8794-826aa6c7908b";
@@ -48,7 +48,7 @@ const Login = () => {
             setIsSending(true); 
       
             await sendPasswordResetEmail(auth, email, {
-              url: 'https://localhost:3000/reset-password', 
+              url: websiteUrl, 
               handleCodeInApp: true, 
             });
       
@@ -177,7 +177,10 @@ const Login = () => {
                 if (!user.emailVerified && !isVerificationSended) {
                 
                   
-                  await sendEmailVerification(user);
+                  await sendEmailVerification(user, {
+                    url: websiteUrl, 
+                    handleCodeInApp: true,
+                  });
                   setIsVerificationSended(true);  
 
                  
