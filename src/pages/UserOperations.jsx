@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { confirmPasswordReset,applyActionCode } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import Header from '../components/Header';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import { UserContext } from '../context/user-context';
 
 const UserOperations = () => {
     const navigate = useNavigate();
+    const {setIsVerificationSended} = useContext(UserContext);
     const [searchParams] = useSearchParams();
     const [firstPassword,setFirstPassword] = useState("");
     const [secondPassword,setSecondPassword] = useState("");
@@ -33,8 +35,10 @@ const UserOperations = () => {
   const verifyEmail=(code)=>{
     if (code) {
       // Şifre sıfırlama kodunu doğrula
+      setIsVerificationSended(true);
       applyActionCode(auth, code)
         .then(() => {
+         
           Swal.fire({
             position: "center-center",
             icon: "success",
@@ -47,6 +51,7 @@ const UserOperations = () => {
           })
         })
         .catch((error) => {
+          setIsVerificationSended(false);
           let errorMessage = '';
 
         switch (error.code) {
