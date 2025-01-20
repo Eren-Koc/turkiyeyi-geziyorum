@@ -36,7 +36,7 @@ const UserOperations = () => {
     if (code) {
       // Şifre sıfırlama kodunu doğrula
     const user =auth.currentUser;
-    if(!user.emailVerified){
+    if(user && !user.emailVerified){
 
     
       applyActionCode(auth, code)
