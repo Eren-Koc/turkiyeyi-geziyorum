@@ -29,7 +29,8 @@ export const UserContextProvider = (props) => {
     const [loading, setLoading] = useState(true);
     const [user,setUser] = useState(null);
     const [publicPosts,setPublicPosts] = useState([]);
-    const [isVerificationSended,setIsVerificationSended] = useState(false);
+   
+    const [autoVerificationConfirm,setAutoVerificationConfirm] = useState(false);
     const [storageLimitOfUser,setStorageLimitOfUser] = useState(100);
     
     const defaultProfilePictures=["https://firebasestorage.googleapis.com/v0/b/travel-app-93279.firebasestorage.app/o/profilePictures%2Fman.png?alt=media&token=f6a8faf1-41f4-431b-8794-826aa6c7908b",
@@ -42,7 +43,7 @@ export const UserContextProvider = (props) => {
 
    useEffect(()=>{
     
-    const unsubsribe = onAuthStateChanged(auth , (authUser) =>{ 
+    const unsubsribe = onAuthStateChanged(auth , (authUser) => { 
 
       
 
@@ -62,39 +63,13 @@ export const UserContextProvider = (props) => {
         getPublicPostData();
        setLoading(false);
 
-         if(authUser && isVerificationSended){   
-        const interval = setInterval(() => {
-          authUser.reload()  
-            .then(() => {
-              if (authUser.emailVerified) {
-                clearInterval(interval);
-                setCurrentUserAuth(authUser);
-                getUserData(authUser.uid);
-                getPublicPostData();
-                setLoading(false);
-                closeLoginForm();
-               
-                 Swal.fire({
-                position: "top-end",
-                icon: "success",
-                text: "Başarıyla giriş yapıldı.",
-                showConfirmButton: false,
-                timer: 1000,
-          });
-                
-              }
-            });
-        }, 5000); 
-
-      }
-
-    
         
     })
 
     return()=> unsubsribe();
     
-   },[isVerificationSended])
+   },[autoVerificationConfirm])
+   
 
    const closeLoginForm=()=>{
     const form = document.getElementById('login-form');
@@ -565,7 +540,7 @@ const getFileSize = async (filePath) => {
 
     
 
-    const contextValue={currentUserAuth,setCurrentUserAuth,loading,user,PostUpload,getUserData,Logout,PostUpdate,DeletePost,changeImage,CreatePublicPost,publicPosts,Cities,setIsVerificationSended,isVerificationSended,storageLimitOfUser};
+    const contextValue={currentUserAuth,setCurrentUserAuth,loading,user,PostUpload,getUserData,Logout,PostUpdate,DeletePost,setAutoVerificationConfirm,autoVerificationConfirm,changeImage,CreatePublicPost,publicPosts,Cities,storageLimitOfUser};
 
     return (
         <UserContext.Provider value={contextValue}>{props.children}</UserContext.Provider>

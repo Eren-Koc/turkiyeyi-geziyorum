@@ -19,10 +19,10 @@ const Login = () => {
 
 
     
-    const {currentUser,setCurrentUser,setIsVerificationSended,isVerificationSended} = useContext(UserContext);
+    const {currentUser,setCurrentUser} = useContext(UserContext);
 
     const [register,setRegister]=useState(false);
-    
+     const [isVerificationSended,setIsVerificationSended] = useState(false);
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const [name,setName]=useState("");
