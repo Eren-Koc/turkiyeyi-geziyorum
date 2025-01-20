@@ -16,6 +16,8 @@ import { RiDoubleQuotesR } from "react-icons/ri";
 import '../index.css';
 import PopupCollider from '../components/PopupCollider'
 import Loader from '../components/Loader'
+
+
 const Explore = () => {
  const getTodayValue=()=>{
    const now = new Date();
@@ -217,24 +219,24 @@ const Explore = () => {
          </div>
          </div>
        
-         <span className='my-1 max-[900px]:hidden pl-4 font-medium'>Menü</span>
+        {user ? (<> <span className='my-1 max-[900px]:hidden pl-4 font-medium'>Menü</span>
 
-        <div onClick={() => handleButtonClick(<UserCard traveledCities={traveledCities} allImagesCount={allImagesCount} />)} className='flex max-[900px]:hidden gap-8 px-4 py-2 rounded-md hover:bg-[#2DA15F]/20 cursor-pointer justify-center items-center w-fit'>
-         <FaUserAlt className='w-[24px] h-[24px]'/>
-         <span>Profil</span>
-         </div>
-         <div onClick={() => handleButtonClick(<Achievements traveledCities={traveledCities} allImagesCount={allImagesCount}/>)} className='flex max-[900px]:hidden gap-8 px-4 py-2 rounded-md hover:bg-[#2DA15F]/20 cursor-pointer justify-center items-center w-fit'>
-         <GrAchievement className='w-[24px] h-[24px]'/>
-         <span>Başarımlar</span>
-         </div>
-         <a href="/profile">
-         <div className='flex max-[900px]:hidden gap-8 px-4 py-2 rounded-md hover:bg-[#2DA15F]/20 cursor-pointer justify-center items-center w-fit'>
-         <MdOutlineFlight className='w-[24px] h-[24px]'/>
-         <span>Kader Kurası</span>
-         
-         </div></a>
+<div onClick={() => handleButtonClick(<UserCard traveledCities={traveledCities} allImagesCount={allImagesCount} />)} className='flex max-[900px]:hidden gap-8 px-4 py-2 rounded-md hover:bg-[#2DA15F]/20 cursor-pointer justify-center items-center w-fit'>
+ <FaUserAlt className='w-[24px] h-[24px]'/>
+ <span>Profil</span>
+ </div>
+ <div onClick={() => handleButtonClick(<Achievements traveledCities={traveledCities} allImagesCount={allImagesCount}/>)} className='flex max-[900px]:hidden gap-8 px-4 py-2 rounded-md hover:bg-[#2DA15F]/20 cursor-pointer justify-center items-center w-fit'>
+ <GrAchievement className='w-[24px] h-[24px]'/>
+ <span>Başarımlar</span>
+ </div>
+ <a href="/profile">
+ <div className='flex max-[900px]:hidden gap-8 px-4 py-2 rounded-md hover:bg-[#2DA15F]/20 cursor-pointer justify-center items-center w-fit'>
+ <MdOutlineFlight className='w-[24px] h-[24px]'/>
+ <span>Kader Kurası</span>
+ 
+ </div></a></>) : null}
        
-         <input type="submit" value={"Gönderi Ekle"} className='mt-6 h-[40px] max-[900px]:hidden w-full rounded-lg bg-[#2DA15F] text-white font-medium cursor-pointer' />
+       <a href="/profile"><input type="submit" value={"Gönderi Ekle"} className='mt-6 h-[40px] max-[900px]:hidden w-full rounded-lg bg-[#2DA15F] text-white font-medium cursor-pointer' /></a>
 
       </div>
       

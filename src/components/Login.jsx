@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { FcBusinessman,FcBusinesswoman } from "react-icons/fc";
 import { BsGenderAmbiguous } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
-
+import { FiEyeOff,FiEye } from "react-icons/fi";
 import { auth,db } from '../firebase/firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword,sendPasswordResetEmail,sendEmailVerification,signOut  } from 'firebase/auth';
 
@@ -31,6 +31,8 @@ const Login = () => {
     const [resetPassword,setResetPassword] = useState(false);
     const [isSending, setIsSending] = useState(false);
     const [onProcess,setOnProcess]=useState(false);
+    const [showPassword,setShowPassword]=useState(false);
+
     const defaultBanner="https://firebasestorage.googleapis.com/v0/b/travel-app-93279.firebasestorage.app/o/banners%2Fbg.jpg?alt=media&token=4d137226-bac0-4d4a-a631-a435a2770975";
     const websiteUrl = "https://turkiyeyi-geziyorum.vercel.app/user-operations";
     const setProfilePicture=(gender)=>{
@@ -319,12 +321,18 @@ className='h-[50px] font-medium shadow-sm px-3 py-1 outline-none rounded-lg bg-s
         
 
   {
-    !resetPassword ? <input type="password"
+    !resetPassword ?
+
+    <div className='w-full h-fit relative'>
+      {showPassword ? <FiEye onClick={()=>{setShowPassword(!showPassword)}} size={20} className='absolute right-3 top-1/2 cursor-pointer -translate-y-1/2  z-10 text-[#2DA15F]' /> : <FiEyeOff onClick={()=>{setShowPassword(!showPassword)}} size={20} className='absolute right-3 top-1/2 cursor-pointer -translate-y-1/2  z-10 text-slate-300' />}
+      <input type={showPassword ? 'text' : 'password'}
     placeholder='Password'
     value={password}
    onChange={(e) => setPassword(e.target.value)}
    required
-   className='h-[50px] font-medium px-3 py-1 outline-none rounded-lg bg-slate-50 w-full' />  : null
+   className='h-[50px] font-medium pl-3 pr-10 py-1 outline-none rounded-lg bg-slate-50 w-full' /> 
+   </div>
+    : null
   }
         
         {
