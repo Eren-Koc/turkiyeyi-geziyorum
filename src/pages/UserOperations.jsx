@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 
 import { confirmPasswordReset,applyActionCode } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import Header from '../components/Header';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Swal from 'sweetalert2'
-import { UserContext } from '../context/user-context';
+
 
 const UserOperations = () => {
     const navigate = useNavigate();
-    const {setIsVerificationSended} = useContext(UserContext);
+
     const [searchParams] = useSearchParams();
     const [firstPassword,setFirstPassword] = useState("");
     const [secondPassword,setSecondPassword] = useState("");
@@ -35,7 +35,10 @@ const UserOperations = () => {
   const verifyEmail=(code)=>{
     if (code) {
       // Şifre sıfırlama kodunu doğrula
-      setIsVerificationSended(true);
+    const user =auth.currentUser;
+    if(!user.emailVerified){
+
+    
       applyActionCode(auth, code)
         .then(() => {
          
@@ -47,11 +50,13 @@ const UserOperations = () => {
             confirmButtonColor:"#2DA15F",   
             timer:1000,
           }).then((result) => {
+            window.location.reload();
             navigate("/profile");
+            
           })
         })
         .catch((error) => {
-          setIsVerificationSended(false);
+
           let errorMessage = '';
 
         switch (error.code) {
@@ -93,7 +98,7 @@ const UserOperations = () => {
 
         });
     }
-
+  }
   }
 
   const handleResetPassword=async()=>{
