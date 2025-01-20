@@ -136,7 +136,7 @@ const EditPost = ({editPostVisibility,setEditPostVisibility,props,setComponent})
   }
 
   const handleEdit=()=>{
-    setComponent(<Loader/>)
+    setComponent(<Loader size={60}/>)
     PostUpdate(title, desc, selectedCity, selectedDate, images, user.id, postState,FirebaseImagesURL,props).then((result) => {
      setComponent(null);
      setEditPostVisibility(null)

@@ -100,7 +100,7 @@ const Profile = () => {
       const newFile = event.target.files[0];
 
       if(newFile){
-        handleButtonClick(<Loader/>)
+        handleButtonClick(<Loader size={60}/>)
         await changeImage(newFile,user.id,"banner_picture");
         handleButtonClick(null)
       }
@@ -246,7 +246,7 @@ const handleYearFilterChange=(event)=>{
 
   
    if(loading){
-     return <PopupCollider component={<Loader/>}/>
+     return <PopupCollider component={<Loader size={60}/>}/>
    }
 
   return (

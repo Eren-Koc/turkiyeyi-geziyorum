@@ -11,6 +11,7 @@ import { setDoc,doc } from 'firebase/firestore';
 import { UserContext } from '../context/user-context';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import Loader from './Loader';
 
 
 
@@ -29,6 +30,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [resetPassword,setResetPassword] = useState(false);
     const [isSending, setIsSending] = useState(false);
+    const [onProcess,setOnProcess]=useState(false);
     const defaultBanner="https://firebasestorage.googleapis.com/v0/b/travel-app-93279.firebasestorage.app/o/banners%2Fbg.jpg?alt=media&token=4d137226-bac0-4d4a-a631-a435a2770975";
     const websiteUrl = "https://turkiyeyi-geziyorum.vercel.app/user-operations";
     const setProfilePicture=(gender)=>{
@@ -91,7 +93,7 @@ const Login = () => {
             if(gender){
               
                 try {
-
+                  setOnProcess(true);
                     await createUserWithEmailAndPassword(auth,email,password)
                 const user =auth.currentUser;
                 if(user){
@@ -121,7 +123,8 @@ const Login = () => {
                         text: "Başarıyla kayıt olundu.",
                         showConfirmButton: false,
                         timer: 1000,
-                      });   
+                      }); 
+                      setOnProcess(false);  
                     
                 } catch (error) {
                
@@ -146,12 +149,8 @@ const Login = () => {
                         showConfirmButton: true,
                         confirmButtonColor: "#2DA15F",
                     });
-                }
-            
-
-                
-                
-               
+                    setOnProcess(false);
+                }        
             }
             else{
                 Swal.fire({
@@ -168,12 +167,10 @@ const Login = () => {
         }
         else{
             try {
-            
+            setOnProcess(true);
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
-
-            
-            
+                    
                 if (!user.emailVerified && !isVerificationSended) {
                 
                   
@@ -192,23 +189,26 @@ const Login = () => {
                  confirmButtonColor: "#2DA15F",
                    
                   });
+
+                  setOnProcess(false);
                   return; 
                 }
+                else if(user.emailVerified){
 
-                else{
-                  
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  text: "Başarıyla giriş yapıldı.",
-                  showConfirmButton: false,
-                  timer: 1000,
-                });
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    text: "Başarıyla giriş yapıldı.",
+                    showConfirmButton: false,
+                    timer: 1000,
+                  });
+              
+                  setOnProcess(false);
+                  navigate("/profile");
+                  closeForm(); 
+                }
+
             
-             
-                navigate("/profile");
-                closeForm(); 
-              }
             
               } catch (error) {
         
@@ -219,6 +219,7 @@ const Login = () => {
                   showConfirmButton: false,
                   timer: 1000,
                 });
+                setOnProcess(false);
               }
             
             
@@ -329,11 +330,19 @@ className='h-[50px] font-medium shadow-sm px-3 py-1 outline-none rounded-lg bg-s
             !register && !resetPassword  ? <span onClick={()=>{setResetPassword(true); setRegister(true);}} className='w-full text-right font-medium text-sm cursor-pointer'>Forget Password</span> : null
         }
         
-
+        <div className='w-full relative mt-6  h-fit'>
+          {
+            onProcess ? (
+              <div className='absolute flex justify-center items-center bg-transparent top-0 left-0 w-full h-full'>
+          <Loader className='' size={30}/>
+          </div>
+            ) : null
+          }
+        
         <input
         onClick={handleResetPassword}
-        className='w-full mt-6  bg-[#2DA15F] rounded-lg shadow-lg cursor-pointer font-medium h-[50px]' type="submit" value={!resetPassword ? (register ? 'Kayıt Ol' : 'Giriş Yap') : 'Şifremi Unuttum'} />
-
+        className= {`w-full  bg-[#2DA15F] rounded-lg shadow-lg cursor-pointer font-medium h-[50px] ${onProcess ? 'bg-slate-300' : 'bg-[#2DA15F]'}`} type="submit" disabled={onProcess} value={onProcess ? " " : (resetPassword ? 'Şifremi Unuttum' : (register ? 'Kayıt Ol' : 'Giriş Yap'))} />
+</div>
         <span onClick={()=>{setRegister(!register); setResetPassword(false);}} className='text-sm mt-6 cursor-pointer'>{ register ? 'Zaten üye misin?' : 'Henüz üye olmadın mı?' }  <span className='font-medium'> {register ? 'Giriş yap.' : 'Üye ol.'}</span></span>   
         </div>
 

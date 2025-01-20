@@ -81,7 +81,7 @@ const EnterPost = ({setComponent,component}) => {
 
         if(ErrorArray.length<1){  
         try {
-          setComponent(<Loader/>);
+          setComponent(<Loader size={60}/>);
           await PostUpload(title, desc, selectedCity, selectedDate, images, user.id, postState);
           
           setTitle("");

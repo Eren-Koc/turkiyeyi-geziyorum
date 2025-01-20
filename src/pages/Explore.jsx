@@ -167,7 +167,7 @@ const Explore = () => {
 
  
   if(loading){
-    return <PopupCollider component={<Loader/>}/>
+    return <PopupCollider component={<Loader size={60}/>}/>
   }
 
   return (

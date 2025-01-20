@@ -25,7 +25,7 @@ const UserCard = ({traveledCities,allImagesCount}) => {
 
       if(newFile){
        
-        handleButtonClick(<Loader/>);
+        handleButtonClick(<Loader size={60}/>);
         await changeImage(newFile,user.id,"profile_picture");
         handleButtonClick(null);
        

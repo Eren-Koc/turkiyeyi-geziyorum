@@ -145,7 +145,7 @@ const Contact = () => {
           <FaLinkedin className='text-[#2DA15F]  w-[35px] h-[35px] max-[600px]:w-[25px] max-[600px]:h-[25px] ' />
           <span className=''>LinkedIn</span>
         </a>
-        <a target='blank' href='' className='flex flex-col group items-center justify-center gap-1 w-fit'>
+        <a href='https://erenkoc-portfolio.vercel.app/' target='blank' className='flex flex-col group items-center justify-center gap-1 w-fit'>
           <RiGalleryView className='text-[#2DA15F]  w-[35px] h-[35px] max-[600px]:w-[25px] max-[600px]:h-[25px] ' />
           <span className=''>Portfolyo</span>
         </a>
