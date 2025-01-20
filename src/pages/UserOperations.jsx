@@ -47,7 +47,7 @@ const UserOperations = () => {
             confirmButtonColor:"#2DA15F",   
             timer:1000,
           }).then((result) => {
-            navigate("/profile");
+            window.location.href = "/";
           })
         })
         .catch((error) => {
