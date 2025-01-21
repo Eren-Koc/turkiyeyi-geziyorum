@@ -1,7 +1,6 @@
 import React from 'react'
 import '../index.css';
 const Loader = ({size}) => {
-  console.log(size);
   return (
 
        <div style={{

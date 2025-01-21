@@ -126,7 +126,7 @@ const EnterPost = ({setComponent,component}) => {
       let result="Eksik bilgiler: ";
       array.map((eachValue,i)=>{
         if(i == array.length - 1){
-          console.log("eren");
+     
           result+= eachValue;
         }
         else{
@@ -163,8 +163,7 @@ const EnterPost = ({setComponent,component}) => {
         allowedTypes.includes(file.type)
       );
 
-      console.log(newFiles,"newFiles");
-      console.log(validFiles,"validFiles");
+  
 
 
       if (images.length > 0 && validFiles.length > 0) {
