@@ -1,10 +1,14 @@
 import React from 'react'
 import '../index.css';
 const Loader = ({size}) => {
+  console.log(size);
   return (
-   
-       <div className={`spinner w-[${size+'px'}] h-[${size+'px'}]`}></div>
-//  60 60
+
+       <div style={{
+        width: `${size}px`,
+        height: `${size}px`,
+      }} className={`spinner`}></div>
+
   )
 }
 

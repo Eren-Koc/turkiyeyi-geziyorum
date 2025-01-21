@@ -206,14 +206,14 @@ const Explore = () => {
          <MdDateRange className='w-[24px] h-[24px] max-[900px]:hidden'/>  
          <div className='flex flex-col max-[900px]:flex-row  gap-2'>
          
-         <span   className='relative outline-none py-1 px-2 cursor-pointer w-[120px] max-[900px]:text-center h-[24px]  rounded-md flex gap-2 justify-center items-center'>
-         <span className='pointer-events-none w-full h-full absolute outline-none z-20 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2  select-none'>{firstSelectedDate ? formatDate(firstSelectedDate) : 'Tarih Seç'  }</span>
-         <input type="date" value={secondSelectedDate}  min={zeroPoint} onChange={(e) => setFirstSelectedDate(e.target.value)} max={today} className=' explore-date absolute outline-none w-full z-10 top-0 left-0'/>
+         <span   className='relative outline-none py-1 px-2 cursor-pointer w-[120px]  max-[900px]:text-center h-[24px]  rounded-md flex gap-2 justify-center items-center'>
+         <span className='pointer-events-none max-[500px]:hidden  block w-full h-full absolute outline-none z-20 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2  select-none'>{firstSelectedDate ? formatDate(firstSelectedDate) : 'Tarih Seç'  }</span>
+         <input type="date" value={firstSelectedDate}  min={zeroPoint} onChange={(e) => setFirstSelectedDate(e.target.value)} max={today} className=' explore-date max-[500px]:text-center absolute outline-none w-full z-10 top-0 left-0'/>
          </span>
          <MdDateRange className='w-[24px] h-[24px] max-[900px]:block hidden'/>  
-         <span   className='relative outline-none py-1 px-2 cursor-pointer w-[120px] max-[900px]:text-center h-[24px]  rounded-md flex gap-2  justify-center items-center'>
-         <span className='pointer-events-none w-full h-full absolute outline-none z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none'>{secondSelectedDate ? formatDate(secondSelectedDate) : 'Tarih Seç'  }</span>
-         <input type="date" value={secondSelectedDate}  min={zeroPoint} onChange={(e) => setSecondSelectedDate(e.target.value)} max={today} className=' explore-date absolute outline-none w-full z-10 top-0 left-0'/>
+         <span   className='relative outline-none py-1 px-2 cursor-pointer w-[120px]  max-[900px]:text-center h-[24px]  rounded-md flex gap-2  justify-center items-center'>
+         <span className='pointer-events-none max-[500px]:hidden block w-full h-full absolute outline-none z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none'>{secondSelectedDate ? formatDate(secondSelectedDate) : 'Tarih Seç'  }</span>
+         <input type="date" value={secondSelectedDate}  min={zeroPoint} onChange={(e) => setSecondSelectedDate(e.target.value)} max={today} className=' explore-date max-[500px]:text-center absolute outline-none w-full z-10 top-0 left-0'/>
          </span>
 
          </div>
@@ -242,8 +242,8 @@ const Explore = () => {
       
       <div className='content max-w-[700px] max-[900px]:px-2 flex flex-col gap-4 w-full max-[900px]:items-center h-fit'>
         
-        <div className='filter flex gap-3 w-fit items-center'>
-          {selectedCity!="Şehir Seçiniz." || dateFilter ?  <span className=''>Seçili Filtre:</span> : null}
+        <div className='filter flex gap-3 w-fit max-[500px]:flex-col max-[500px]:w-full items-center max-[500px]:items-start'>
+          {selectedCity!="Şehir Seçiniz." || dateFilter ?  <span className='font-medium max-[500px]:mt-4 '>Seçili Filtre:</span> : null}
           {selectedCity!="Şehir Seçiniz." ?
           
           

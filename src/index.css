@@ -184,38 +184,45 @@ input[type="number"] {
   background-color: #2DA15F; 
 }
 
-.explore-date::-webkit-datetime-edit-text {
-  -webkit-appearance: none;
-  display: none;
-}
-.explore-date::-webkit-datetime-edit-month-field{
-  -webkit-appearance: none;
-  display: none;
-}
-.explore-date::-webkit-datetime-edit-day-field {
-  -webkit-appearance: none;
-  display: none;
-}
-.explore-date::-webkit-datetime-edit-year-field {
-  -webkit-appearance: none;
-  display: none;
-}
+
 
 .no-scroll {
   overflow: hidden;
   height: 100%; /* Boyutu sabitle */
 }
 
-.explore-date::-webkit-calendar-picker-indicator{
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  background: none;
-  z-index: 10; 
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  outline: none;
+
+
+@media only screen and (min-width: 500px) {
+  .explore-date::-webkit-datetime-edit-text {
+    -webkit-appearance: none;
+    display: none;
+  }
+  .explore-date::-webkit-datetime-edit-month-field{
+    -webkit-appearance: none;
+    display: none;
+  }
+  .explore-date::-webkit-datetime-edit-day-field {
+    -webkit-appearance: none;
+    display: none;
+  }
+  .explore-date::-webkit-datetime-edit-year-field {
+    -webkit-appearance: none;
+    display: none;
+  }
+  
+  .explore-date::-webkit-calendar-picker-indicator{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    background: none;
+    z-index: 10; 
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    outline: none;
+  }
+
 }
 
 @media only screen and (max-width: 500px) {
@@ -224,4 +231,9 @@ input[type="number"] {
     display: none !important;
   
   }
+  .explore-date::-webkit-calendar-picker-indicator{
+    -webkit-appearance: none;
+    display: none;
+  }
+
 }
