@@ -16,6 +16,7 @@ import { RiDoubleQuotesR } from "react-icons/ri";
 import '../index.css';
 import PopupCollider from '../components/PopupCollider'
 import Loader from '../components/Loader'
+import { Helmet } from 'react-helmet'; 
 
 
 const Explore = () => {
@@ -174,6 +175,10 @@ const Explore = () => {
 
   return (
     <div className='w-full  items-start min-h-screen h-fit flex flex-col gap-4'>
+       <Helmet>
+        <title>Keşfet</title>
+      </Helmet>
+
       <Header props={"Keşfet"}/>
       <PopupCollider setComponent={setActiveComponent} component={activeComponent}/>
       <div className=' relative flex pb-8 justify-center items-end z-0 w-full h-[30vh] object-cover object-center  '>

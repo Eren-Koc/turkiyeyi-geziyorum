@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Sinop from '../images/sinop.jpg';
 import Antalya from '../images/antalya.jpg';
 import Mardin from '../images/mardin.jpg';
+import { Helmet } from 'react-helmet';
 
 import { Autoplay, Pagination,EffectFade } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -52,6 +53,9 @@ const Home = () => {
     
   return (
     <div className='w-full min-h-screen h-fit'>
+      <Helmet>
+        <title>Anasayfa</title>
+      </Helmet>
    
       <div className='w-full h-screen bg-black/30 z-[5]  fixed'></div>
       <div className='relative landing-bg w-full h-screen'>

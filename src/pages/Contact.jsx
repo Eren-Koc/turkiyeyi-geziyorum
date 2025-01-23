@@ -8,6 +8,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2'
+import { Helmet } from 'react-helmet'; 
 
 const Contact = () => {
   const form = useRef();
@@ -62,6 +63,9 @@ const Contact = () => {
 
   return (
     <div className='flex justify-center items-center w-full min-h-screen'>
+       <Helmet>
+        <title>İletişim</title>
+      </Helmet>
     <Header props={"İletişim"} />
     <div className='fixed top-0 left-0 w-full h-16 bg-black'></div>
     

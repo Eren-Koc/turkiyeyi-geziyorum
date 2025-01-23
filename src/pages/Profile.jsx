@@ -19,6 +19,7 @@ import { GrAchievement } from "react-icons/gr";
 import { MdOutlineFlight } from "react-icons/md";
 import { FaFilter } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
+import { Helmet } from 'react-helmet'; 
 
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { RiDoubleQuotesR } from "react-icons/ri";
@@ -251,7 +252,10 @@ const handleYearFilterChange=(event)=>{
 
   return (
     <div className='w-full min-h-screen bg-white h-fit flex flex-col items-center '>
-         
+          <Helmet>
+        <title>Profil</title>
+      </Helmet>
+
          <Header props={"Profil"}/>
          <PopupCollider setComponent={setActiveComponent} component={activeComponent}/>
       <div className='relative flex justify-center  pb-6 items-end z-0 w-full h-[30vh] object-cover object-center  '>
