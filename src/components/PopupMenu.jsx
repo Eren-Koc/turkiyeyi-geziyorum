@@ -14,9 +14,12 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import UserCard from './UserCard';
 import Achievements from './Achievements';
+import Swal from 'sweetalert2'
+import { CiLogin } from "react-icons/ci";
+import { IoIosLogOut } from "react-icons/io";
 
 const PopupMenu = ({popupMenuVisibility,setPopupMenuVisibility}) => {
-  const {user,storageLimitOfUser,loading} = useContext(UserContext); 
+  const {user,storageLimitOfUser,loading,Logout} = useContext(UserContext); 
   const [activeComponent, setActiveComponent] = useState(null);
   const [traveledCities,setTraveledCities] = useState([]);
   const [allImagesCount,setAllImagesCount] = useState([]);
@@ -70,7 +73,43 @@ const PopupMenu = ({popupMenuVisibility,setPopupMenuVisibility}) => {
     return result;
   }
 
+  const LoginForm=()=>{
+    const form = document.getElementById('login-form');
+    form.style.display="flex";     
+    
+}
 
+  const HandleLogout=()=>{
+   Swal.fire({
+     
+      text: "Çıkış yapmak istediğine emin misin?",
+      showDenyButton: true,
+      showCancelButton: false,
+      icon:"question",
+      iconColor:"#2DA15F",
+      confirmButtonText: "Çıkış yap",
+      confirmButtonColor:"#2DA15F",
+      denyButtonColor:"#aaa",
+      denyButtonText: `Vazgeç`
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+          Logout();
+          Swal.fire({
+            position: "center-center",
+            icon: "success",
+            text: "Başarıyla çıkış yapıldı.",
+            showConfirmButton: false,
+            timer: 1000,
+          }); 
+ 
+        
+      } else if (result.isDenied) {
+       
+      }
+    });
+
+  }
   
 
 
@@ -151,6 +190,24 @@ const PopupMenu = ({popupMenuVisibility,setPopupMenuVisibility}) => {
           </>) : null}
 
         </div>
+
+       <div>
+        {
+          user ?   <span onClick={()=>{HandleLogout()}} className='flex gap-2 cursor-pointer border hover:bg-[#2DA15F]/20 items-center rounded-md p-[6px]'>
+          <IoIosLogOut size={20}/>
+          Çıkış Yap
+        </span> :   <div onClick={()=>{LoginForm()}} className='max-[500px]:flex hidden cursor-pointer gap-2 items-center p-[6px] rounded-md border'>
+            <CiLogin size={20}/>
+            <span>Giriş Yap</span>
+          </div>
+        }
+ 
+
+        
+       </div>
+        
+        
+        
     </div>
   )
 }

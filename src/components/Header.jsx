@@ -84,7 +84,7 @@ if(loading){
 
   return (
     <header className={`w-full fixed z-40 top-0 left-0  flex justify-center items-center   h-16 ${isScrolled ? 'bg-black/40 backdrop-blur-sm shadow-md' : null}`}>
-      <nav className='flex font-medium  w-full  px-64 max-[1300px]:px-8 text-lg text-slate-200 justify-between max-[1000px]:px-4 items-center'>
+      <nav className='flex font-medium  w-full  px-64 max-[1400px]:px-8 text-lg text-slate-200 justify-between max-[1000px]:px-4 items-center'>
         <a href="/" className='mr- flex w-fit justify-center items-center gap-2'>
           <img src={Logo} className='h-[40px] max-[600px]:h-[30px] w-auto' alt="" />
           <span className=' text-slate-200 font-medium'>Türkiyeyi Geziyorum</span>
